@@ -1,7 +1,51 @@
-body {
+// 鼠标美化
+
+// 默认鼠标：箭头
+html {
   cursor: url(@/styles/mouse/default.cur), auto;
 }
 
-a {
-  cursor: pointer;
+// 点击链接
+.mousePointer {
+  cursor: url(@/styles/mouse/pointer.cur), pointer;
+}
+
+// 文本
+.mouseText {
+  cursor: url(@/styles/mouse/text.cur), text;
+}
+
+// 提示帮助
+.mouseHelp {
+  cursor: url(@/styles/mouse/help.cur), help;
+}
+
+// 被悬浮的物体可被移动
+.mouseMove {
+  cursor: url(@/styles/mouse/move.cur), move;
+}
+
+// 左下右上双向箭头
+.mouse_nesw_resize {
+  cursor: url(@/styles/mouse/nesw_resize.cur), nesw-resize;
+}
+
+// 不能执行
+.mouse_not_allowed {
+  cursor: url(@/styles/mouse/not_allowed.cur), not-allowed;
+}
+
+// 垂直方向双向箭头
+.mouse_ns_resize {
+  cursor: url(@/styles/mouse/ns_resize.cur), ns-resize;
+}
+
+// 左上右下双向箭头
+.mouse_nwse_resize {
+  cursor: url(@/styles/mouse/nwse_resize.cur), nwse-resize;
+}
+
+// 水平双向箭头
+.mouse_ew_resize {
+  cursor: url(@/styles/mouse/ew_resize.cur), ew-resize;
 }
