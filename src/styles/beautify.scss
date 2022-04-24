@@ -2,15 +2,17 @@
 
 // 默认鼠标：箭头
 html {
-  cursor: url(@/styles/mouse/default.cur), auto;
+  cursor: url(@/styles/mouse/default.cur), default;
 }
 
 // 点击链接
+a,
 .mousePointer {
   cursor: url(@/styles/mouse/pointer.cur), pointer;
 }
 
 // 文本
+p,
 .mouseText {
   cursor: url(@/styles/mouse/text.cur), text;
 }

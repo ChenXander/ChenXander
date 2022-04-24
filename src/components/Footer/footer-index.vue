@@ -12,12 +12,12 @@
     </div>
 
     <div class="right">
-      <div class="footer_contact">
+      <div class="footer_contact mousePointer">
         <div title="我的QQ" class="qq">
           <img src="@/assets/img/footer/qq_code.png" class="QRcode" alt="" />
           <img
             src="@/assets/img/footer/qq_icon.svg"
-            class="rigth_icon"
+            class="right_icon"
             alt=""
           />
         </div>
@@ -29,7 +29,7 @@
           />
           <img
             src="@/assets/img/footer/wexin_icon.svg"
-            class="rigth_icon"
+            class="right_icon"
             alt=""
           />
         </div>
@@ -37,7 +37,7 @@
           <a href="https://github.com/ChenXander" target="_blank">
             <img
               src="@/assets/img/footer/github_icon.svg"
-              class="rigth_icon"
+              class="right_icon"
               alt=""
             />
           </a>
@@ -113,7 +113,6 @@ export default {
       margin-bottom: 10px;
       & > div {
         margin-right: 20px;
-        cursor: pointer;
       }
 
       .qq,
@@ -124,9 +123,9 @@ export default {
           position: absolute;
           width: 63px;
           left: -14px;
-          top: -10px;
+          top: -30px;
 
-          transition: all 0.6s;
+          transition: all 0.5s;
           opacity: 0;
 
           border: 1px #f0eeee solid;
@@ -134,15 +133,14 @@ export default {
         &:hover {
           .QRcode {
             opacity: 1;
-            top: -80px;
+            top: -70px;
           }
         }
       }
       .github {
         margin-right: 0;
       }
-
-      .rigth_icon {
+      .right_icon {
         width: 30px;
       }
     }
