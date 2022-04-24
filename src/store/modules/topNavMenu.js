@@ -14,6 +14,11 @@ const state = {
       icon: 'tk-biaoqian'
     },
     {
+      name: '新闻',
+      path: '/news',
+      icon: 'tk-news'
+    },
+    {
       name: '归档',
       path: '/archive',
       icon: 'tk-biji'

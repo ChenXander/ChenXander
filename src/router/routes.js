@@ -29,6 +29,11 @@ export default [
         path: '/about',
         name: 'about',
         component: () => import('@/views/About/about-index.vue')
+      },
+      {
+        path: '/news',
+        name: 'news',
+        component: () => import('@/views/News/news-index.vue')
       }
     ]
   }
