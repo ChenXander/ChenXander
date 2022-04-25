@@ -3,6 +3,8 @@
  */
 import Vue from 'vue'
 
-import { Popover } from 'element-ui'
+import { Popover, Carousel, CarouselItem } from 'element-ui'
 
 Vue.use(Popover)
+Vue.use(CarouselItem)
+Vue.use(Carousel)
