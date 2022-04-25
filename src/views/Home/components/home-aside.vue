@@ -17,9 +17,6 @@
 
       <!-- 联系方式 -->
       <div class="contactIcon mousePointer">
-        <a href="https://github.com/ChenXander" target="_blank">
-          <i class="tk tk-GitHub"></i>
-        </a>
         <el-popover placement="bottom" width="200" trigger="hover">
           <slot name="content">
             <img
@@ -40,6 +37,9 @@
           </slot>
           <i class="tk tk-wexin" slot="reference"></i>
         </el-popover>
+        <a href="https://github.com/ChenXander" target="_blank">
+          <i class="tk tk-GitHub"></i>
+        </a>
       </div>
     </div>
 
