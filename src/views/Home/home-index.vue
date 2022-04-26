@@ -10,7 +10,8 @@
 
       <!-- 内容区文章 -->
       <section class="container">
-        <article-item></article-item>
+        <article-item v-for="(item, index) in list" :key="index" :item="item">
+        </article-item>
       </section>
 
       <!-- 内容区底部 -->
@@ -32,8 +33,11 @@ export default {
   components: { homeAside, ArticleItem },
   name: 'home-index',
   data() {
-    return {}
-  }
+    return {
+      list: [] // 文章列表数据
+    }
+  },
+  created() {}
 }
 </script>
 
