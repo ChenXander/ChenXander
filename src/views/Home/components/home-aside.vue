@@ -1,5 +1,5 @@
 <template>
-  <aside>
+  <div class="home_aside">
     <!-- 我的信息 -->
     <div class="userInfo">
       <img
@@ -53,7 +53,7 @@
         欢迎来到ThreeKim的博客! 我是ChenXander, 乐意与您分享前端知识!
       </div>
     </div>
-  </aside>
+  </div>
 </template>
 
 <script>
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-aside {
+.home_aside {
   margin-bottom: 20px;
   padding: 20px 0;
 
