@@ -3,11 +3,19 @@
  */
 import Vue from 'vue'
 
-import { Popover, Carousel, CarouselItem, Button, Message } from 'element-ui'
+import {
+  Popover,
+  Carousel,
+  CarouselItem,
+  Button,
+  Message,
+  Tooltip
+} from 'element-ui'
 
 Vue.use(Popover)
 Vue.use(CarouselItem)
 Vue.use(Carousel)
 Vue.use(Button)
+Vue.use(Tooltip)
 
 Vue.prototype.$message = Message

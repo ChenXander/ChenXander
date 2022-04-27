@@ -1,4 +1,5 @@
 <template>
+  <!-- 主页侧边栏 -->
   <div class="home_aside">
     <!-- 我的信息 -->
     <div class="userInfo">
@@ -59,9 +60,6 @@
 <script>
 export default {
   name: 'home-aside',
-  data() {
-    return {}
-  },
   methods: {
     // 加入书签
     addBookmark() {

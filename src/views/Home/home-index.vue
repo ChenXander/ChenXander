@@ -1,13 +1,15 @@
 <template>
   <main class="home_content">
     <!-- 头部 -->
-    <header class="content_title">
-      <i class="tk tk-shuye"></i>
-      <span>文章精选</span>
+    <header class="content_title custom_container">
+      <div class="featured_Articles">
+        <i class="tk tk-shuye"></i>
+        <span>文章精选</span>
+      </div>
     </header>
 
     <!-- 内容区 -->
-    <div class="content_body">
+    <div class="content_body custom_container">
       <article class="home_left">
         <!-- 左侧内容区文章 -->
         <section class="container">
@@ -23,7 +25,22 @@
     </div>
 
     <!-- 底部 -->
-    <footer class="home_footer mousePointer">我是底部</footer>
+    <footer class="home_footer custom_container mousePointer">
+      <div class="home_footer_img">
+        <el-tooltip
+          content="点击去查看更多文章哦~"
+          placement="right"
+          effect="light"
+        >
+          <img
+            class="loadingMoreImg mousePointer"
+            src="@/assets/img/footer/loadingMore.gif"
+            alt=""
+            @click="loadMoreArticles"
+          />
+        </el-tooltip>
+      </div>
+    </footer>
   </main>
 </template>
 
@@ -52,32 +69,33 @@ export default {
       const res = await getArticleList()
       this.list = res.data
       console.log(this.list)
-    }
+    },
+    // 加载更多文章
+    loadMoreArticles() {}
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .home_content {
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 20px;
   background: #f0f0f0;
   /* 头部 */
   .content_title {
     padding: 10px 0;
 
-    width: 70%;
     height: 30px;
+    color: #0a91b9;
     text-align: center;
+    .featured_Articles {
+      width: 70%;
+    }
     .tk {
+      margin-right: 15px;
       font-size: 22px;
-      color: #fff;
-      color: #0a91b9;
       font-weight: bold;
-      margin-right: 6px;
     }
     span {
-      color: #0a91b9;
       font-size: 16px;
       font-weight: 800;
     }
@@ -85,24 +103,32 @@ export default {
 
   .content_body {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+
     /* 左侧内容 */
     .home_left {
-      display: flex;
-      justify-content: space-between;
-      flex: 1;
+      width: 70%;
     }
 
     /* 侧边栏 */
     .home_right {
       margin-top: 20px;
+      width: 23%;
     }
   }
 
   /* 底部 */
   .home_footer {
     margin: 20px auto 0;
+
+    .home_footer_img {
+      display: flex;
+      justify-content: center;
+      width: 70%;
+    }
+    .loadingMoreImg {
+      height: 60px;
+    }
   }
 }
 </style>
