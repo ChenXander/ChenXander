@@ -77,7 +77,6 @@ export default {
 <style lang="scss" scoped>
 .home_aside {
   margin-bottom: 20px;
-  padding: 20px 0;
 
   /* 我的信息 */
   .userInfo {

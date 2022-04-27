@@ -5,7 +5,7 @@
     <top-nav></top-nav>
     <header-index></header-index>
     <!-- 内容区，二级路由出口 -->
-    <router-view></router-view>
+    <router-view class="layout_content"></router-view>
     <!-- 底部 -->
     <footer-index></footer-index>
   </div>
@@ -26,4 +26,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+</style>

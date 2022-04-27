@@ -19,14 +19,15 @@
 
     <!-- 文章内容 -->
     <div class="articleItem_content">
-      <a href="javascript:;" class="artImage"
-        ><img
+      <a href="javascript:;" class="artImage">
+        <img
           :src="baseURL + '/blogAdmin/file/down?downId=' + item.imgId"
           alt=""
-      /></a>
-      <!-- <router-link :to="`/article/detail?id=${item.id}`">
-        <span class="text-grey">{{ item.introduction }}</span>
-      </router-link> -->
+        />
+      </a>
+      <router-link :to="`/article/detail?id=${item._id}`">
+        <span class="text-grey">{{ item.description }}</span>
+      </router-link>
     </div>
 
     <!-- 继续阅读 -->
@@ -88,6 +89,7 @@ export default {
     -5px -5px 10px rgba(0, 0, 0, 0.075);
   border-radius: 5px;
 
+  /* 文章头部 */
   .articleItem_head {
     height: 100px;
     display: flex;
@@ -148,15 +150,16 @@ export default {
     }
   }
 
-  .content {
+  /* 文章内容 */
+  .articleItem_content {
+    display: flex;
     .artImage {
-      display: block;
+      margin-right: 20px;
+
       width: 300px;
       height: 180px;
       border: 1px solid #e8e9e7;
       overflow: hidden;
-      float: left;
-      margin-right: 20px;
       img {
         width: 100%;
         height: 100%;
@@ -166,18 +169,22 @@ export default {
         }
       }
     }
-    /* .text-grey {
+    .text-grey {
+      display: block;
+
       color: #5f5f5f;
       font-size: 18px;
+
+      height: 185px;
       line-height: 1.5;
       letter-spacing: 2px;
-      display: block;
-      height: 185px;
+
       overflow: hidden;
       text-overflow: ellipsis;
-    } */
+    }
   }
 
+  /* 继续阅读 */
   .reading {
     position: relative;
     .resumeReading {
@@ -198,6 +205,7 @@ export default {
     }
   }
 
+  /* 底部标签分类 */
   .articleItem_footer {
     .foot_tag {
       background: #bbb;
