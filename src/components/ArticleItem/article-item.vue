@@ -80,10 +80,11 @@ export default {
   display: flex;
   flex-direction: column;
 
-  overflow: hidden;
-  padding: 0 30px 10px 30px;
   position: relative;
   margin-top: 20px;
+  padding: 0 30px 10px 30px;
+
+  overflow: hidden;
   background-color: #fff;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.075),
     -5px -5px 10px rgba(0, 0, 0, 0.075);
@@ -91,32 +92,34 @@ export default {
 
   /* 文章头部 */
   .articleItem_head {
-    height: 100px;
     display: flex;
     padding-top: 30px;
+    height: 100px;
     .popular {
       position: absolute;
+      left: -18px;
+      top: 9px;
+      transform: rotate(-45deg);
+
+      width: 74px;
       height: 20px;
       line-height: 20px;
       text-align: center;
-      width: 74px;
+
       background-color: #ff5722;
       color: #fff;
-      transform: rotate(-45deg);
-      left: -18px;
-      top: 9px;
       font-size: 15px;
     }
 
     .title {
+      padding: 0 20vw 5px 0;
+
       line-height: 30px;
-      padding: 0 19vw 5px 0;
       border-bottom: 1px solid #e8e9e7;
       font-size: 18px;
       font-weight: 400;
       .original {
         color: #6fa3ef;
-        font-size: 18px;
       }
       .list_title {
         color: #8b88e4;
@@ -125,27 +128,30 @@ export default {
     }
 
     .time {
-      font-family: SourceCodeProRegular, Menlo, Monaco, Consolas, 'Courier New',
-        monospace, 'Helvetica Neue', Arial, sans-serif;
       position: absolute;
       right: 10px;
       top: 15px;
-      background-color: #fff;
+
       padding: 0 20px 5px 20px;
+
       line-height: 32px;
+      font-family: SourceCodeProRegular, Menlo, Monaco, Consolas, 'Courier New',
+        monospace, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #fff;
       .month,
       .year {
         color: #999;
         font-size: 16px;
       }
       .day {
+        position: relative;
+        top: 2px;
         display: block;
+
         text-align: center;
         font-weight: 700;
         font-size: 40px;
         color: #6bc30d;
-        position: relative;
-        top: 2px;
       }
     }
   }
