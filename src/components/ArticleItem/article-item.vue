@@ -37,16 +37,16 @@
     <!-- 文章底部 -->
     <div class="articleItem_footer">
       <i class="tk tk-biaoqian"></i>
-      <span class="foot_tag" v-for="(item1, index) in item.tags" :key="index">
-        {{ item1.name }}
-      </span>
+      <article-tag :tagList="item.tags"></article-tag>
     </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
+import articleTag from '@/components/ArticleItem/components/article-tag.vue'
 export default {
+  components: { articleTag },
   name: 'article-item',
   props: {
     item: {
@@ -193,33 +193,36 @@ export default {
   /* 继续阅读 */
   .reading {
     position: relative;
+
     .resumeReading {
+      margin-top: 10px;
+
       color: #666;
       font-size: 18px;
-      margin-top: 10px;
       font-weight: 700;
     }
     &::before {
       content: ' ';
-      display: inline-block;
-      height: 1px;
+      position: absolute;
       top: 20px;
       left: 100px;
       right: 0;
-      position: absolute;
+
+      display: inline-block;
+
+      height: 1px;
       background-color: #d0d0d0;
     }
   }
 
   /* 底部标签分类 */
-  .articleItem_footer {
+  /* .articleItem_footer {
     .foot_tag {
-      background: #bbb;
-      color: #5f5f5f;
-      font-size: 10px;
       padding: 2px 8px 2px;
       margin-right: 10px;
+
+      font-size: 10px;
     }
-  }
+  } */
 }
 </style>
