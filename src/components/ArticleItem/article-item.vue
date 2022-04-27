@@ -19,12 +19,11 @@
 
     <!-- 文章内容 -->
     <div class="articleItem_content">
-      <a href="javascript:;" class="artImage">
-        <img
-          src="https://img0.baidu.com/it/u=2862534777,914942650&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+      <a href="javascript:;" class="artImage"
+        ><img
+          :src="baseURL + '/blogAdmin/file/down?downId=' + item.imgId"
           alt=""
-        />
-      </a>
+      /></a>
       <!-- <router-link :to="`/article/detail?id=${item.id}`">
         <span class="text-grey">{{ item.introduction }}</span>
       </router-link> -->
@@ -46,7 +45,6 @@
 
 <script>
 import moment from 'moment'
-
 export default {
   name: 'article-item',
   props: {
@@ -55,6 +53,11 @@ export default {
       default() {
         return { msg: '获取文章数据失败' }
       }
+    }
+  },
+  data() {
+    return {
+      baseURL: this.$baseURL // 基地址
     }
   },
   filters: {

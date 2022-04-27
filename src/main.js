@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// 导入请求基地址
+import { baseURL } from '@/utils/request'
+
 // 导入amfe-flexible设置 rem 基准值
 import 'amfe-flexible'
 
@@ -14,6 +17,8 @@ import '@/assets/iconfont/iconfont.css'
 import '@/plugins'
 
 Vue.config.productionTip = false
+
+Vue.prototype.$baseURL = baseURL
 
 new Vue({
   router,

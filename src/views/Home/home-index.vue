@@ -26,8 +26,12 @@
 </template>
 
 <script>
+// 子组件及公共组件
 import homeAside from '@/views/Home/components/home-aside.vue'
 import ArticleItem from '@/components/ArticleItem/article-item.vue'
+
+// api请求
+import { getArticleList } from '@/api/articleAPI'
 
 export default {
   components: { homeAside, ArticleItem },
@@ -37,7 +41,17 @@ export default {
       list: [] // 文章列表数据
     }
   },
-  created() {}
+  created() {
+    this.getArticleList()
+  },
+  methods: {
+    // 获取文章列表数据
+    async getArticleList() {
+      const res = await getArticleList()
+      this.list = res.data
+      console.log(this.list)
+    }
+  }
 }
 </script>
 
