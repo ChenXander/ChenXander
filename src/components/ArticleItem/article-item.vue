@@ -43,14 +43,18 @@
 </template>
 
 <script>
+// moment时间格式化包
 import moment from 'moment'
+
+// 子组件及公共组件
 import articleTag from '@/components/ArticleItem/components/article-tag.vue'
+
 export default {
   components: { articleTag },
   name: 'article-item',
   props: {
     item: {
-      type: Object,
+      type: Object, // 文章数据
       default() {
         return { msg: '获取文章数据失败' }
       }
@@ -61,6 +65,7 @@ export default {
       baseURL: this.$baseURL // 基地址
     }
   },
+  // 处理时间格式
   filters: {
     dayFmt(time) {
       return moment(time).toObject().date
@@ -216,13 +221,38 @@ export default {
   }
 
   /* 底部标签分类 */
-  /* .articleItem_footer {
-    .foot_tag {
-      padding: 2px 8px 2px;
+  @keyframes transparencies {
+    0% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 0.8;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    60% {
+      opacity: 0.4;
+    }
+    80% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .articleItem_footer {
+    display: flex;
+    align-items: center;
+    .tk {
+      font-size: 22px;
       margin-right: 10px;
 
-      font-size: 10px;
+      animation: transparencies 2.5s linear infinite;
     }
-  } */
+  }
 }
 </style>
