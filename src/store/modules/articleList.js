@@ -1,19 +1,27 @@
 // 文章列表数据
 
 const state = {
-  articleList: [], // 总数据
-  articleTags: []
+  // 按创建时间和标签过滤的文章列表
+  articleFilter: {
+    sortBy: 'createTime',
+    tags: ''
+  }
 }
 
 const mutations = {
-  getArticleList(state, listData) {
-    state.articleList = listData // 存放文章列表数据
+  // 存放过滤的文章列表数据
+  changeFilterObj(state, obj) {
+    state.articleFilter = Object.assign(state.articleFilter, obj)
   }
 }
-const actions = {}
+const actions = {
+  operateFilterObj({ commit }, obj) {
+    commit('changeFilterObj', obj)
+  }
+}
 
 export default {
-  namespaced: true,
+  namespaced: false,
   state,
   mutations,
   actions

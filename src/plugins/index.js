@@ -10,7 +10,8 @@ import {
   Button,
   Message,
   Tooltip,
-  Link
+  Link,
+  Tag
 } from 'element-ui'
 
 Vue.use(Popover)
@@ -19,5 +20,6 @@ Vue.use(Carousel)
 Vue.use(Button)
 Vue.use(Tooltip)
 Vue.use(Link)
+Vue.use(Tag)
 
 Vue.prototype.$message = Message

@@ -55,6 +55,9 @@ import BackTop from '@/components/BackTop/back-top.vue'
 // api请求
 import { getArticleList } from '@/api/articleAPI'
 
+// 工具函数
+import { mapGetters } from 'vuex'
+
 export default {
   components: { homeAside, ArticleItem, BackTop },
   name: 'home-index',
@@ -69,14 +72,25 @@ export default {
   methods: {
     // 获取文章列表数据
     async getArticleList() {
-      const res = await getArticleList()
-      this.list = res.data
-      // 将数据存放到vuex
-      this.$store.commit('articleList/getArticleList', res.data)
+      const res = await getArticleList({
+        tags: this.articleFilter.tags,
+        sortBy: this.articleFilter.sortBy
+      })
+      this.list = res.data.data
     },
     // 加载更多文章跳转文章页
     loadMoreArticles() {
       this.$router.push('/article')
+    }
+  },
+  computed: {
+    ...mapGetters(['articleFilter'])
+  },
+  watch: {
+    // 监听过滤的文章列表数据，进行数据刷新
+    articleFilter: {
+      handler: 'getArticleList',
+      deep: true
     }
   }
 }

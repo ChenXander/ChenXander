@@ -57,6 +57,27 @@
       </div>
     </div>
 
+    <!-- 文章排序 -->
+    <div class="articleSort">
+      <div class="articleSort_title">文章排序</div>
+      <!-- 文章标签 -->
+      <div class="articleTags_list">
+        <div
+          :class="
+            articleFilter.sortBy === item.type
+              ? 'list_box list_active'
+              : 'list_box'
+          "
+          v-for="item in articleSort"
+          :key="item.type"
+        >
+          <el-tag :type="item.tagType" @click="tagSortFn(item.type)">
+            {{ item.name }}
+          </el-tag>
+        </div>
+      </div>
+    </div>
+
     <!-- 文章标签 -->
     <div class="articleTags">
       <div class="articleTags_title">文章标签</div>
@@ -66,17 +87,48 @@
 </template>
 
 <script>
-// import { getArticleTagsList } from '@/api/articleAPI'
+import { getArticleTagsList } from '@/api/articleAPI'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home-aside',
   data() {
     return {
-      tagsList: []
+      tagList: [], // 文章标签数组
+      articleSort: [
+        {
+          name: '新发布',
+          type: 'createTime',
+          tagType: 'info'
+        },
+        {
+          name: '浏览量',
+          type: 'meta.viewTotal',
+          tagType: ''
+        },
+        {
+          name: '点赞量',
+          type: 'meta.likeTotal',
+          tagType: 'success'
+        },
+        {
+          name: '评论量',
+          type: 'meta.commentTotal',
+          tagType: 'warning'
+        },
+        {
+          name: '字数量',
+          type: 'meta.txtTotal',
+          tagType: 'danger'
+        }
+      ]
     }
   },
+  computed: {
+    ...mapGetters(['articleFilter'])
+  },
   created() {
-    // this.getArticleTagsList()
+    this.getArticleTagsList()
   },
   methods: {
     // 加入书签
@@ -86,10 +138,21 @@ export default {
         type: 'warning'
       })
     },
+    // 文章排序，标签排序
+    tagSortFn(type) {
+      this.$store.dispatch('operateFilterObj', { sortBy: type })
+    },
 
     // 获取文章标签列表
     async getArticleTagsList() {
-      // const res = await getArticleTagsList()
+      const { data } = await getArticleTagsList()
+      console.log(data)
+      data.forEach((item) => {
+        item.name = item._id.name
+        item.bgColor = item._id.bgColor
+        item._id = item._id.id
+      })
+      this.tagList = data
     }
   }
 }
@@ -183,6 +246,28 @@ export default {
       margin-top: 10px;
       font-size: 14px;
       color: #666;
+    }
+  }
+
+  /* 文章排序 */
+  .articleSort {
+    margin-top: 20px;
+    padding: 15px;
+
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    .articleTags_list {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      .list_box {
+        margin: 10px 2px 0;
+      }
+      .list_active {
+        border: 1px dashed rgba(0, 0, 0, 0.3);
+      }
     }
   }
 }
