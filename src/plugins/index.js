@@ -9,7 +9,8 @@ import {
   CarouselItem,
   Button,
   Message,
-  Tooltip
+  Tooltip,
+  Link
 } from 'element-ui'
 
 Vue.use(Popover)
@@ -17,5 +18,6 @@ Vue.use(CarouselItem)
 Vue.use(Carousel)
 Vue.use(Button)
 Vue.use(Tooltip)
+Vue.use(Link)
 
 Vue.prototype.$message = Message

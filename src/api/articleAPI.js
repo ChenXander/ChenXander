@@ -7,3 +7,12 @@ export function getArticleList() {
     method: 'GET'
   })
 }
+
+// 获取文章标签数据
+export function getArticleTagsList(params) {
+  return request({
+    url: '/statistics/tagList',
+    method: 'GET',
+    params
+  })
+}

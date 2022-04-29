@@ -38,9 +38,11 @@
           </slot>
           <i class="tk tk-wexin" slot="reference"></i>
         </el-popover>
-        <a href="https://github.com/ChenXander" target="_blank">
-          <i class="tk tk-GitHub"></i>
-        </a>
+        <el-tooltip effect="light" content="Github" placement="bottom">
+          <a href="https://github.com/ChenXander" target="_blank">
+            <i class="tk tk-GitHub"></i>
+          </a>
+        </el-tooltip>
       </div>
     </div>
 
@@ -54,12 +56,28 @@
         欢迎来到ThreeKim的博客! 我是ChenXander, 乐意与您分享前端知识!
       </div>
     </div>
+
+    <!-- 文章标签 -->
+    <div class="articleTags">
+      <div class="articleTags_title">文章标签</div>
+      <el-link type="primary">全部文章</el-link>
+    </div>
   </div>
 </template>
 
 <script>
+// import { getArticleTagsList } from '@/api/articleAPI'
+
 export default {
   name: 'home-aside',
+  data() {
+    return {
+      tagsList: []
+    }
+  },
+  created() {
+    // this.getArticleTagsList()
+  },
   methods: {
     // 加入书签
     addBookmark() {
@@ -67,6 +85,11 @@ export default {
         message: '按下 CTRL+D 收藏【ThreeKim博客】',
         type: 'warning'
       })
+    },
+
+    // 获取文章标签列表
+    async getArticleTagsList() {
+      // const res = await getArticleTagsList()
     }
   }
 }

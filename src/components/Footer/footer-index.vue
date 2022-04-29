@@ -33,15 +33,17 @@
             alt=""
           />
         </div>
-        <div title="我的Github" class="github">
-          <a href="https://github.com/ChenXander" target="_blank">
-            <img
-              src="@/assets/img/footer/github_icon.svg"
-              class="right_icon"
-              alt=""
-            />
-          </a>
-        </div>
+        <el-tooltip effect="light" content="Github" placement="top">
+          <div title="我的Github" class="github">
+            <a href="https://github.com/ChenXander" target="_blank">
+              <img
+                src="@/assets/img/footer/github_icon.svg"
+                class="right_icon"
+                alt=""
+              />
+            </a>
+          </div>
+        </el-tooltip>
       </div>
       <p title="我的">联系邮箱: ChenXander@163.com</p>
     </div>

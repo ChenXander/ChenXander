@@ -71,7 +71,8 @@ export default {
     async getArticleList() {
       const res = await getArticleList()
       this.list = res.data
-      console.log(res)
+      // 将数据存放到vuex
+      this.$store.commit('articleList/getArticleList', res.data)
     },
     // 加载更多文章跳转文章页
     loadMoreArticles() {
