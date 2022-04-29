@@ -70,7 +70,7 @@ nav {
   left: 0;
   z-index: 100;
 
-  padding: 0 50px;
+  padding: 0 120px;
 
   transition: all 0.3s;
 
@@ -84,7 +84,7 @@ nav {
   /* 左侧 */
   .left_menu {
     display: flex;
-    width: 70%;
+    width: 74%;
 
     /* 导航选项 */
     .topNav_ul {
@@ -142,7 +142,7 @@ nav {
     display: flex;
     justify-content: flex-end;
 
-    width: 25%;
+    width: 26%;
     .login {
       position: relative;
 

@@ -41,6 +41,8 @@
         </el-tooltip>
       </div>
     </footer>
+    <!-- 返回顶部 -->
+    <back-top></back-top>
   </main>
 </template>
 
@@ -48,12 +50,13 @@
 // 子组件及公共组件
 import homeAside from '@/views/Home/components/home-aside.vue'
 import ArticleItem from '@/components/ArticleItem/article-item.vue'
+import BackTop from '@/components/BackTop/back-top.vue'
 
 // api请求
 import { getArticleList } from '@/api/articleAPI'
 
 export default {
-  components: { homeAside, ArticleItem },
+  components: { homeAside, ArticleItem, BackTop },
   name: 'home-index',
   data() {
     return {
@@ -68,10 +71,12 @@ export default {
     async getArticleList() {
       const res = await getArticleList()
       this.list = res.data
-      console.log(this.list)
+      console.log(res)
     },
-    // 加载更多文章
-    loadMoreArticles() {}
+    // 加载更多文章跳转文章页
+    loadMoreArticles() {
+      this.$router.push('/article')
+    }
   }
 }
 </script>
