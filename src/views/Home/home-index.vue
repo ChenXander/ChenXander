@@ -1,5 +1,5 @@
 <template>
-  <main class="home_content">
+  <main class="home_content" id="js-canvas-container">
     <!-- 头部 -->
     <header class="content_title custom_container">
       <div class="featured_Articles">
@@ -73,6 +73,7 @@ export default {
     // 获取文章列表数据
     async getArticleList() {
       const res = await getArticleList({
+        pageSize: 5,
         tags: this.articleFilter.tags,
         sortBy: this.articleFilter.sortBy
       })

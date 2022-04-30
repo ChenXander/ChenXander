@@ -1,6 +1,6 @@
 <template>
   <!-- 顶部导航栏 -->
-  <nav>
+  <nav :style="nav_style">
     <!-- 左侧导航选项 -->
     <div class="left_menu">
       <ul class="topNav_ul">
@@ -49,13 +49,43 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'top-nav',
   data() {
-    return {}
+    return {
+      nav_style: {}
+    }
+  },
+  mounted() {
+    //监听页面滚动
+    window.addEventListener('scroll', this.windowScroll)
   },
   computed: {
     // 获取导航菜单选项
     ...mapGetters({
       menuList: 'menu'
     })
+  },
+  methods: {
+    windowScroll() {
+      const scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop
+      if (scrollTop > 700) {
+        this.nav_style = {
+          backgroundColor: `#fff`,
+          boxShadow: `1px 1px 5px rgba(0, 0, 0, 0.2)`,
+          color: `#000`,
+          transition: `all 1s`
+        }
+      } else {
+        this.nav_style = {
+          transition: `all 1s`
+        }
+      }
+    }
+  },
+  destroyed() {
+    //销毁滚动事件
+    window.removeEventListener('scroll', this.windowScroll)
   }
 }
 </script>
@@ -80,7 +110,6 @@ nav {
   font-size: 16px;
   color: #fff;
 
-  box-shadow: 0 1px 5px 0 rgb(19 141 165 / 48%);
   /* 左侧 */
   .left_menu {
     display: flex;
