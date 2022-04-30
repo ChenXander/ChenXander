@@ -61,7 +61,7 @@
     <div class="articleSort">
       <div class="articleSort_title">文章排序</div>
       <!-- 文章标签 -->
-      <div class="articleTags_list">
+      <div class="articleTags_list mousePointer">
         <div
           :class="
             articleFilter.sortBy === item.type
@@ -257,13 +257,21 @@ export default {
     text-align: center;
     background: #fff;
     border-radius: 10px;
+    .articleSort_title {
+      height: 35px;
+      font-size: 14px;
+      border-bottom: 1px solid #e8e9e7;
+    }
+
     .articleTags_list {
       display: flex;
-      align-items: center;
-      justify-content: space-around;
       flex-wrap: wrap;
       .list_box {
-        margin: 10px 2px 0;
+        width: 24%;
+        margin-top: 15px;
+        &:not(:nth-child(4n)) {
+          margin-right: calc(4% / 3);
+        }
       }
       .list_active {
         border: 1px dashed rgba(0, 0, 0, 0.3);
