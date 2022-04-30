@@ -60,8 +60,8 @@
     <!-- 文章排序 -->
     <div class="articleSort">
       <div class="articleSort_title">文章排序</div>
-      <!-- 文章标签 -->
-      <div class="articleTags_list mousePointer">
+      <!-- 文章排序标签 -->
+      <div class="sortingTags_list mousePointer">
         <div
           :class="
             articleFilter.sortBy === item.type
@@ -80,17 +80,41 @@
 
     <!-- 文章标签 -->
     <div class="articleTags">
-      <div class="articleTags_title">文章标签</div>
-      <el-link type="primary">全部文章</el-link>
+      <div class="articleTags_title">
+        文章标签
+        <el-link
+          type="primary"
+          v-if="articleFilter.tags"
+          class="all_article"
+          :underline="false"
+          @click.native="tagClick(false)"
+        >
+          全部文章
+        </el-link>
+      </div>
+      <!-- 标签组件 -->
+      <article-tag
+        class="tagList"
+        :tagList="tagList"
+        :showBorder="true"
+        @tagClick="tagClick"
+      >
+      </article-tag>
+      <div class="noTags" v-if="tagList.length == 0">暂无标签</div>
     </div>
   </div>
 </template>
 
 <script>
+// api请求
 import { getArticleTagsList } from '@/api/articleAPI'
+// 子组件及公共组件
+import articleTag from '@/components/ArticleItem/components/article-tag.vue'
+
 import { mapGetters } from 'vuex'
 
 export default {
+  components: { articleTag },
   name: 'home-aside',
   data() {
     return {
@@ -141,6 +165,11 @@ export default {
     // 文章排序，标签排序
     tagSortFn(type) {
       this.$store.dispatch('operateFilterObj', { sortBy: type })
+    },
+    // 标签点击事件
+    tagClick(id) {
+      const tags = id ? id : ''
+      this.$store.dispatch('operateFilterObj', { tags })
     },
 
     // 获取文章标签列表
@@ -263,11 +292,12 @@ export default {
       border-bottom: 1px solid #e8e9e7;
     }
 
-    .articleTags_list {
+    .sortingTags_list {
       display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
       .list_box {
-        width: 24%;
+        display: flex;
         margin-top: 15px;
         &:not(:nth-child(4n)) {
           margin-right: calc(4% / 3);
@@ -276,6 +306,45 @@ export default {
       .list_active {
         border: 1px dashed rgba(0, 0, 0, 0.3);
       }
+    }
+  }
+
+  /* 文章标签列表 */
+  .articleTags {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-top: 20px;
+    padding: 15px;
+
+    background: #fff;
+    border-radius: 10px;
+    text-align: center;
+
+    .articleTags_title {
+      position: relative;
+      height: 35px;
+      font-size: 14px;
+      border-bottom: 1px solid #e8e9e7;
+      .all_article {
+        position: absolute;
+        right: 20px;
+      }
+    }
+
+    .tagList {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 15px;
+    }
+
+    .noTags {
+      width: 100%;
+      text-align: center;
+      letter-spacing: 2px;
+      color: #989898;
     }
   }
 }

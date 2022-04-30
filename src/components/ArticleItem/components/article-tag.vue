@@ -1,19 +1,26 @@
 <template>
   <!-- 文章标签组件 -->
-  <div class="tag-list">
+  <div class="tag_list mousePointer">
     <div
-      class="list-box mousePointer"
       v-for="item in tagList"
       :key="item._id"
+      :class="
+        articleFilter.tags == item._id && showBorder
+          ? 'list_box box_active'
+          : 'list_box'
+      "
       :style="{ backgroundColor: item.bgColor }"
+      @click="tagClick(item._id)"
     >
       <i :style="{ borderRightColor: item.bgColor }"></i>
-      {{ item.name }}
+      {{ item.name }}{{ item.count ? '(' + item.count + ')' : '' }}
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'article-tag',
   props: {
@@ -22,18 +29,31 @@ export default {
       default() {
         return []
       }
+    },
+    showBorder: {
+      type: Boolean,
+      default: false
     }
+  },
+  methods: {
+    // 将被点击的标签id传给父组件
+    tagClick(id) {
+      this.$emit('tagClick', id)
+    }
+  },
+  computed: {
+    ...mapGetters(['articleFilter'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.tag-list {
+.tag_list {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 
-  .list-box {
+  .list_box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +87,10 @@ export default {
       border-radius: 50%;
       box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3);
     }
+  }
+
+  .box_active::after {
+    display: none;
   }
 }
 </style>
