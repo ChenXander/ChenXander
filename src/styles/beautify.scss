@@ -7,12 +7,19 @@ html {
 
 // 点击链接
 a,
+button,
 .mousePointer {
   cursor: url(@/styles/mouse/pointer.cur), pointer;
 }
 
 // 文本
 p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .mouseText {
   cursor: url(@/styles/mouse/text.cur), text;
 }
